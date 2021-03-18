@@ -6,6 +6,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 
 const NAME = pkg.name;
+const UMD_NAME = pkg['umd-name'];
 
 const tsConfigPath = path.resolve(process.cwd(), "tsconfig.json");
 const srcPath = path.resolve(process.cwd(), "src");
@@ -15,18 +16,14 @@ const umdDistPath = path.join(distPath, "umd", `${NAME}.js`);
 const esmDistPath = path.join(distPath, "esm", `${NAME}.js`);
 
 // **************** Utils Start ****************
-function camelize(str) {
-  return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
-    return index === 0 ? word.toLowerCase() : word.toUpperCase();
-  }).replace(/\s+/g, '');
-}
+// PASS
 // **************** Utils End ****************
 
 /** @type {import('rollup').RollupOptions} */
 const config = {
   input: inputFilePath,
   output: [
-    { file: umdDistPath, name: camelize(NAME), format: 'umd', sourcemap: true },
+    { file: umdDistPath, name: UMD_NAME, format: 'umd', sourcemap: true },
     { file: esmDistPath, format: 'esm', sourcemap: true },
   ],
   plugins: [

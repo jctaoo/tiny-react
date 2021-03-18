@@ -1,2 +1,2 @@
 # tiny-react
-to coding challenge
+implement a tiny react to coding challenge

@@ -12,9 +12,6 @@ export class FiberScheduleCenter<NativeNode> {
 
   private readonly delegate: FiberDelegate;
 
-  // lanes
-  private workInProgressLanes: Lanes = Lanes.NoLane;
-  private suspenseLanes: Lanes = Lanes.NoLane;
 
   constructor(delegate: FiberDelegate) {
     this.delegate = delegate;

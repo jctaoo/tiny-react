@@ -6,7 +6,7 @@ export type TaskID = number;
 
 export interface SchedulerWork {
   taskID: TaskID;
-  
+  lane?: Lanes;
 }
 
 export abstract class AbstractScheduler<NativeNode> {
